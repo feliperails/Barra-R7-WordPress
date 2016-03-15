@@ -9,8 +9,6 @@
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-include "config.php";
-
 function isFromR7()
 {
     $referer = $_SERVER['HTTP_REFERER'];
@@ -22,7 +20,10 @@ function isFromR7()
 
 function footerR7()
 {
-    global $background_color, $is_partner, $label_partner;
+    $label_partner = 'ENTRETENIMENTO';
+    $background_color = '#e2e2e2';
+    $is_partner = "true";
+
     ?>
     <script id="r7-footer-portal" src="http://barra.r7.com/footer/footer-portal/footer-portal.js" charset="UTF-8">
         {showPane:false, bgC:"<?php echo $background_color;?>", isPartner: <?php echo $is_partner?>, partnerLabel:"<?php echo $label_partner;?>"}
@@ -32,12 +33,18 @@ function footerR7()
 
 function headerR7()
 {
-    global $banner, $submenu;
+    $submenu = "false";
+    $banner = "false";
+
     ?>
     <script type="text/javascript" id="r7barrautil" src="http://barra.r7.com/barra.js">
         {responsivo:true, banner: <?php echo $banner;?>, submenu:<?php echo $submenu;?>}
     </script>
     <?php
+}
+
+if (is_admin()) {
+    return;
 }
 
 if ($show_banner_using_referer && !isFromR7()) {
