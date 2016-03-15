@@ -9,6 +9,8 @@
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+include_once "config.php";
+
 function isFromR7()
 {
     $referer = $_SERVER['HTTP_REFERER'];
@@ -47,7 +49,7 @@ if (is_admin()) {
     return;
 }
 
-if ($show_banner_using_referer && !isFromR7()) {
+if ($r7_show_banner_using_referer && !isFromR7()) {
     return;
 }
 
