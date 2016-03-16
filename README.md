@@ -1,4 +1,4 @@
-#Plugin Barra do R7 - BETA
+#Plugin Barra do R7
 Simples plugin que exibe a barra do portal R7 em um site WordPress parceiro.
 
 ##Changelog (2.0.0)
