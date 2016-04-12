@@ -24,6 +24,7 @@ function r7_barra_plugin_settings() {
     register_setting( 'r7-barra-settings-group', 'background_color' );
     register_setting( 'r7-barra-settings-group', 'sub_menu' );
     register_setting( 'r7-barra-settings-group', 'show_banner' );
+    register_setting( 'r7-barra-settings-group', 'js_detect' );
 }
 
 function r7_barra_plugin_settings_page() {
@@ -34,6 +35,7 @@ function r7_barra_plugin_settings_page() {
     $background_color = empty($background_color)? BACKGROUND_COLOR: $background_color;
     $show_sub_menu = get_option('sub_menu')?'checked=checked':'';
     $show_banner = get_option('show_banner')?'checked=checked':'';
+    $js_detect = get_option('js_detect')?'checked=checked':'';
 
     ?>
     <div class="wrap">
@@ -61,6 +63,16 @@ function r7_barra_plugin_settings_page() {
                 <tr valign="top">
                     <th scope="row">Exibir banner</th>
                     <td><input type="checkbox" <?php echo $show_banner;?> name="show_banner"/></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row">Detectar origem R7 por JavaScript</th>
+                    <td>
+                        <input type="checkbox" <?php echo $js_detect;?> name="js_detect"/>
+                        <p>
+                            Se a detecção se a origem for R7 não estiver funcionando, pode ser por causa de um plugin de cache como WP Super Cache e W3 Total Cache.
+                            Nesse caso, marque essa caixa para utilizar a detecção via JavaScript.
+                        </p>
+                    </td>
                 </tr>
             </table>
             <?php submit_button(); ?>
